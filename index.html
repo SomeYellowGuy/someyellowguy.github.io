@@ -7,6 +7,7 @@ var getParameters = function(name, defaultValue) { // Taken from Blockly code.js
   return val ? decodeURIComponent(val[1].replace(/\+/g, '%20')) : defaultValue;
 };
 var levelmax = [9,17,12,"5","7","7","10"];
+isMobile = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
 /**
    Number - Is not a limited block level
    String - Is a limited block level
@@ -642,6 +643,42 @@ Blockly.defineBlocksWithJsonArray([{
   "tooltip": "Check if a path exists and if it does, execute code in the if statement, otherwise execute the code in the else statement.",
   "helpUrl": ""
 },{
+  "type": "logic_has_side_with_else",
+  "message0": "if path %1 exists %2 do %3 else %4",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "NAME",
+      "options": [
+        [
+          "to the left \u2190",
+          "left"
+        ],
+        [
+          "to the right \u2192",
+          "right"
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_statement",
+      "name": "script"
+    },
+    {
+      "type": "input_statement",
+      "name": "script2"
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 195,
+  "tooltip": "Check if a path exists and if it does, execute code in the if statement, otherwise execute the code in the else statement. Doesn't include path ahead.",
+  "helpUrl": ""
+},{
   "type": "loops_while_space",
   "message0": "while path %1 exists %2 do %3",
   "args0": [
@@ -739,6 +776,10 @@ Blockly.defineBlocksWithJsonArray([{
   "tooltip": "Repeat code inside the statement until a path exists.",
   "helpUrl": ""
 }]);
+
+if (isMobile) {
+    document.getElementById("blocklyDiv").style = "height: 450px; width: 600px; float: right;";
+}
 
 var toolbox = document.getElementById("toolbox"+levelno);
 
@@ -1210,6 +1251,7 @@ switch(levelno){
 	 }
 	 paths[113] = new component(40,40,eval("c.b2"),80,80);
 	 paths[69] = new component(40,40,eval("c.g2"),40,80); // Replace 69 to a grass. Funny that it is 69.
+	 paths[50] = new component(40,40,eval("c.g2"),160,400); // Replace 50 to a grass. Didn't expect 50.
 }	 
 console.warn("Took "+((new Date())-load)+"ms to load the game!")
 /// Funny how level 1 has a simpler level than level 2, which has a simpler level than level 3, and so on... until level 5 being the most complex :P
