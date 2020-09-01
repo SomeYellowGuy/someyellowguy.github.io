@@ -1132,7 +1132,7 @@ switch(levelno){
      var dir = [0,1];
    	 var player = new component(40, 40, "red",360, 360);
 	 var directionplayer = new component(10,10,"#ff8888",40,40)
-	 Blockly.goal("You now have repeat until path blocks! Use one with three blocks in it to complete the level!",function(){
+	 Blockly.goal("You now have repeat until path blocks! Use one with a block in it to complete the level!",function(){
 	 Blockly.how('While path blocks: Executes the script inside until a path doesn\'t exist. Hint 1: Put a move forward before the repeat until block. Hint 2: Use the \'to the left\' option.')},4);
 	 for (var i=0; i<3; i++){
       paths[i] = new component(40,40,eval("c.s"+((i+1)%2+1)),320,40*i+280);
@@ -1147,14 +1147,18 @@ switch(levelno){
       paths[i+13] = new component(40,40,eval("c.s"+(i%2+1)),40*i+280,200);
 	 }
 	 for (var i=0; i<8; i++){
-      paths[i+17] = new component(40,40,eval("c.s"+(i%2+1)),400,40*i+80);
+	  if (i+17 != 23) {
+        paths[i+17] = new component(40,40,eval("c.s"+(i%2+1)),400,40*i+80);
+	  } else {
+        paths[23] = new component(40,40,c.g2,400,320);
+	  }
 	 }
 	 for (var i=0; i<3; i++){
       paths[i+25] = new component(40,40,eval("c.s"+((i+1)%2+1)),40*i+240,120);
-	  }
+	 }
 	 for (var i=0; i<11; i++){
       paths[i+28] = new component(40,40,eval("c.s"+((i+1)%2+1)),40*i,40);
-	  }
+	 }
 	 for (var i=0; i<7; i++){
       paths[i+39] = new component(40,40,eval("c.s"+((i+1)%2+1)),120,40*i+80);
 	 }
@@ -1585,6 +1589,17 @@ document.getElementById('stop').disabled = true;
 document.getElementById('stop').addEventListener("click",function(){
      result(3);
 });
+  
+/// LEVELS
+
+// 1 - Avassyu
+// 2 - Avassyu
+// 3 - Agastya
+// 4 - Agastya
+// 5 - Agastya (at this point Avassyu told me to create all levels from now on)
+console.log("Made by Avassyu and partially helped by Agastya. Enjoy! Fun with blocks by Blockly!");
+console.log("This must be our best project so far. Created somewhere in late August of 2020.");
+console.log("Are you trying to cheat? Please don't do that if you are 🥺...") // Square is a pleading face emoji
 </script>
    </body>
 </html>
