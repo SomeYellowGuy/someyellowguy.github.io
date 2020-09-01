@@ -1,0 +1,130 @@
+<html>
+  <body>
+     <head>
+	   <script src="blockly_compressed.js"></script>
+	 </head>
+	 <style>
+	    @font-face {
+              font-family: 'Segoe UI';
+              src: url('segoeui.woff') format('woff');
+              font-weight: normal;
+              font-style: normal;
+        }
+		.blocklytreelabel, .blocklytext, .goog-menuitem-content, .blocklytooltip, .blocklyflyoutlabeltext, body {
+		      font-family: Segoe UI !important;
+		}
+		#goto {
+		   background-color: #24c918;
+		   color: white;
+		   text-align: center;
+		   padding: 4px 6px;
+		   border-radius: 6px;
+		   border: 2px solid black;
+		   font-family: Segoe UI;
+		}
+	 </style>
+	 <script>
+	    Blockly.Msg.GO = "Go to level %1";
+	    var getParameters = function(name, defaultValue) { // Taken from Blockly code.js
+          var val = location.search.match(new RegExp('[?&]' + name + '=([^&]+)'));
+          return val ? decodeURIComponent(val[1].replace(/\+/g, '%20')) : defaultValue;
+        };
+	    function getValue(){return workspace.getAllBlocks()[0].inputList[0].fieldRow[1].selectedOption_[1];}
+	 </script>
+	 <xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none">
+	    <block type="go" x="5" y="10" deletable="false" disabled="false" movable="false">
+          <field name="l">1</field>
+        </block>
+	 </xml>
+<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none"></xml>
+	 <h1>Select a level:</h1>
+	 <div id="blocklyDiv" style="height: 50px; width: 175px;"></div>
+	 <script>
+	 document.getElementById('workspaceBlocks').getElementsByTagName('block')[0].getElementsByTagName('field')[0].childNodes[0].nodeValue = getParameters('level','1');
+	 
+	 Blockly.defineBlocksWithJsonArray([{
+  "type": "go",
+  "message0": "%{BKY_GO}",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "l",
+      "options": [
+        [
+          "1",
+          "1"
+        ],
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+		[
+          "5",
+          "5"
+        ],
+		[
+          "6",
+          "6"
+        ],
+		[
+          "7",
+          "7"
+        ]
+      ]
+    }
+  ],
+  "colour": "#039dfc",
+  "tooltip": "",
+  "helpUrl": ""
+}]);
+var fun = function() {
+  this._colour = 30*getValue();
+}
+      /* TODO: Change toolbox XML ID if necessary. Can export toolbox XML from Workspace Factory. */
+var toolbox = document.getElementById("toolbox");
+
+var options = { 
+	toolbox : toolbox, 
+	collapse : false, 
+	comments : false, 
+	maxBlocks : 1, 
+	trashcan : false, 
+	horizontalLayout : false, 
+	toolboxPosition : 'start', 
+	css : true, 
+	media : 'https://blockly-demo.appspot.com/static/media/', 
+	rtl : false, 
+	scrollbars : false, 
+	sounds : true, 
+	oneBasedIndex : true
+};
+/* Inject your workspace */ 
+var workspace = Blockly.inject("blocklyDiv", options);
+
+/* Load Workspace Blocks from XML to workspace. Remove all code below if no blocks to load */
+
+/* TODO: Change workspace blocks XML ID if necessary. Can export workspace blocks XML from Workspace Factory. */
+var workspaceBlocks = document.getElementById("workspaceBlocks"); 
+
+/* Load blocks to workspace. */
+Blockly.Xml.domToWorkspace(workspaceBlocks, workspace);
+	 </script>
+	 <p><p><p><p><button id="goto" onclick="window.location.href = 'index.html?level='+getValue();">Go to level n!</button></p></p></p></p>
+	 <script>
+	    setInterval(function(){
+		  document.getElementById('goto').innerHTML = "Go to level "+getValue()+"!";
+		  workspace.getAllBlocks()[0].colour_ = getValue()*30;
+		},30)
+		console.log("Made by Avassyu and partially helped by Agastya. Enjoy! Fun with blocks by Blockly!");
+        console.log("This must be our best project so far. Created somewhere in late August of 2020.");
+	 </script>
+  </body>
+</html>
