@@ -271,7 +271,7 @@ if (!empty) window.location.href = "?level=1"
 		<script src="comment.js"></script>
 		<script src="alert.js"></script>
 		<canvas id="a" height="450" width="480"></canvas>
-		<div id="blocklyDiv" style="height: 450px; width: 740px; float: right;"></div>
+		<div id="blocklyDiv" style="height: 440px; width: 700px; float: right;"></div>
 	  </head>
 	  <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox1" style="display: none">
        <category name="Move" colour="#5ba55b">
@@ -420,7 +420,10 @@ if (!empty) window.location.href = "?level=1"
   <category name="Loops" colour="#9539f7">
     <block type="controls_repeat_limited"></block>
 	<block type="loops_until_finish"></block>
+	<sep></sep>
 	<block type="loops_while_space" disabled="true"></block>
+	<label text="Cannot be used in level 7."></label>
+	<sep></sep>
 	<block type="loops_until_space"></block>
   </category>
   <category name="Logic" colour="195">
@@ -778,7 +781,7 @@ Blockly.defineBlocksWithJsonArray([{
 }]);
 
 if (isMobile) {
-    document.getElementById("blocklyDiv").style = "height: 450px; width: 600px; float: right;";
+    document.getElementById("blocklyDiv").style = "height: 450px; width: 440px; float: right;";
 }
 
 var toolbox = document.getElementById("toolbox"+levelno);
@@ -1474,6 +1477,7 @@ function result(a){
 		 var b = document.getElementById("stop");
 	     a.disabled = false;
          b.disabled = true;
+		 stepper = null;
 		 console.log("Stopped the code!")
 	  } else if (a === true) {
 	     Blockly.alert("Keep trying! Something is not right.");
