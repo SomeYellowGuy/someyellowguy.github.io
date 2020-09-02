@@ -1176,7 +1176,7 @@ switch(levelno){
      var dir = [0,1];
    	 var player = new component(40, 40, "red",360, 360);
 	 var directionplayer = new component(10,10,"#ff8888",40,40)
-	 Blockly.goal("You now have repeat until path blocks! Use one with a block in it to complete the level!",function(){
+	 Blockly.goal("You now have repeat until path blocks! Use one with 3 blocks in it to complete the level!",function(){
 	 Blockly.how('While path blocks: Executes the script inside until a path doesn\'t exist. Hint 1: Put a move forward before the repeat until block. Hint 2: Use the \'to the left\' option.')},4);
 	 for (var i=0; i<3; i++){
       paths[i] = new component(40,40,eval("c.s"+((i+1)%2+1)),320,40*i+280);
