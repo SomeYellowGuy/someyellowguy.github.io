@@ -11,7 +11,7 @@ Dialog.isActive = false;
 Blockly.alert = function(mes, callback){
 	if (typeof callback !== "function") callback = function(){};
 	console.log(["Info",mes]);
-	Dialog.show('Alert:', mes, {
+	Dialog.show(Blockly.Msg["ALERT_ALERT_COLON"], mes, {
 		showOkay: true,
 		onOkay: callback,
 		onCancel: callback,
@@ -22,7 +22,7 @@ Blockly.alert = function(mes, callback){
 Blockly.goal = function(mes,callback){
 	if (typeof callback === 'undefined') callback = function(){};
 	console.log(["Goal",mes]);
-	Dialog.show(!isitHard?'Goal:':'Challenge:', mes, {
+	Dialog.show(Blockly.Msg["ALERT_"+((isitHard ? "CHALLENGE" : "GOAL").toUpperCase())+"_COLON"], mes, {
 		showOkay: true,
 		onOkay: function(){setTimeout(callback,500)},
 		onCancel: function(){setTimeout(callback,500)},
@@ -34,7 +34,7 @@ Blockly.how = function(mes,callback,m){
 	if (typeof callback === 'undefined') callback = function(){};
 	setHint(function(a,b){
 	 console.warn(["How to use",mes]);
-	 Dialog.show('How to use:', mes, {
+	 Dialog.show(Blockly.Msg["ALERT_HOW_COLON"], mes, {
 		showOkay: true,
 		onOkay: function(){setTimeout(callback,500)},
 		onCancel: function(){setTimeout(callback,500)},
@@ -46,7 +46,7 @@ Blockly.how = function(mes,callback,m){
 Blockly.code = function(mes){
 	
 	console.log(["Code",mes]);
-	Dialog.show('Code Generated:', mes, {
+	Dialog.show(Blockly.Msg["ALERT_CODE_COLON"], mes, {
 		showOkay: true,
 		showGen: true,
 		isitHard: isitHard
@@ -55,7 +55,7 @@ Blockly.code = function(mes){
 
 Blockly.congrats = function(mes,callback){
 	console.log(["Congrats",mes]);
-	Dialog.show('Congratulations!', mes, {
+	Dialog.show(Blockly.Msg["ALERT_CONGRATS"], mes, {
 		showOkay: true,
 		nextmode: true,
 		showCancel: true,
@@ -67,7 +67,7 @@ Blockly.congrats = function(mes,callback){
 Blockly.confirm = function(mes, callback){
 	if (typeof callback !== "function") callback = function(bool){};
 	console.log(["Confirmation",mes]);
-	Dialog.show("Confirmation:", mes, {
+	Dialog.show(Blockly.Msg["ALERT_CONFIRM_COLON"], mes, {
 		showOkay: true,
 		onOkay: function(){
 			callback(true);
@@ -84,7 +84,7 @@ Blockly.prompt = function(mes, default_, callback){
 	if (typeof default_ !== "string") callback = String(default_) || "";
 	if (typeof callback !== "function") callback = function(value){};
 	console.log(["Prompt",mes,"Default value: "+default_]);
-	Dialog.show('Answer: ', mes, {
+	Dialog.show(Blockly.Msg["ALERT_ANSWER_COLON"], mes, {
 		showInput: true,
 		showOkay: true,
 		onOkay: function(){
@@ -125,8 +125,8 @@ Dialog.show = function(title,mes,options){
 	if (typeof options.variablemode === "undefined") options.variablemode = false;
 	if (typeof options.showGen === "undefined") options.showGen = false;
 	if (options.isitHard) x = "_hard";
-	var cancelButton = options.variablemode ? 'Back' : 'Cancel';
-	var okButton = options.variablemode ? 'Delete' : (options.nextmode ? 'Next' : 'Okay');
+	var cancelButton = options.variablemode ? Blockly.Msg["BUTTON_BACK"] : Blockly.Msg["BUTTON_CANCEL"];
+	var okButton = options.variablemode ? Blockly.Msg["BUTTON_DELETE"] : (options.nextmode ? Blockly.Msg["BUTTON_NEXT"] : Blockly.Msg["BUTTON_OK"]);
 	var backdropDiv = Dialog.backdropDiv_;
 	var dialogDiv = Dialog.dialogDiv_;
 	if (!dialogDiv){
@@ -157,8 +157,8 @@ Dialog.show = function(title,mes,options){
 	dialogDiv.innerHTML = '<header class="DialogTitle' + x + '"></header>' +
 	c+'<'+z+' class="'+a+'"'+b+'></'+z+'>'+d+(options.showInput?'<div><p><input id="dialogInput' + x + '" size="60"><p></div>':'') +
 	'<div class="DialogButtons">'+
-	(options.showCancel?'<button id="DialogCancel' + x + '">' + cancelButton + '</button>':'') + (options.showCancel && options.showOkay ? '<a'+x+'>--------------------------------------------</a>' : '') +
-	(options.showOkay?'<button id="DialogOkay' + x + '">' + okButton + '</button>':'') +
+	(options.showCancel?'<button id="DialogCancel' + x + '">' + cancelButton + '</button>':'') + (options.showCancel && options.showOkay ? '<a'+x+'>----------------------------------------</a>' : '') +
+	(options.showOkay?'<button id="DialogOkay' + x + '" style="float: right;">' + okButton + '</button>':'') +
 	'</div>';
 	dialogDiv.getElementsByClassName('DialogTitle'+x)[0]
       .appendChild(document.createTextNode(title));
