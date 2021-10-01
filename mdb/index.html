@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" href="./styles.css">
+	
+	<version>
+		v1.7 beta
+	</version>
+
+	<div class="lang"></div>
+
+	<input type="file" class="openFile" hidden="true">
+	<input type="file" class="openList" hidden="true">
+
+	<script src="scripts.js"></script>
+
+	<div class="dialog">
+		<div class="dialogBox">
+			<div class="dialogTitle">
+				<div class="dialogTitleText"><dt id="dTitle"></dt></div>
+				<button class="dialogExitBtn">×</button>
+			</div>
+			<div class="dialogMessage">
+				<div class="dialogMesText"><dt id="dMessage"></dt></div>
+			</div>
+			<div class="dialogBottom"></div>
+		</div>
+	</div>
+</head>
+
+<body onload="Minecraft.start()">	
+
+	<div id="blockTitle">
+		<div>
+			<left>Minecraft Datapack Generator (Blockly)</left>
+			<div style="width: 140%;"></div>
+			<right>
+				
+			</right>
+		</div>
+	</div>
+	<div id="tabs">
+		<button class="tab" id="saveTab" onclick="Minecraft.save()">Save</button>
+		<button class="tab" id="loadTab" onclick="Minecraft.load()">Load</button>
+		<button class="tab" id="exportTab" onclick="Minecraft.exporting()">Export</button>
+		<button class="tab" id="importTab" onclick="Minecraft.importing()">Import</button>
+		<button class="tab" id="savesTab" onclick="Minecraft.savelist()">Saves List</button>
+		<button class="tab" id="collTab" onclick="Minecraft.collection(false)">Export Saves List</button>
+		<button class="tab" id="icolTab" onclick="Minecraft.collection(true)">Import Saves List</button>
+		<button class="tab" id="allTab" onclick="Minecraft.exportAll()">Export All Saves as ZIP</button>
+		<div id="switchers">
+			<button class="tab active" id="blocksTab" onclick="Minecraft.goto('blocks')">Blocks</button>
+			<button class="tab" id="codeTab" onclick="Minecraft.goto('code')">Code/XML</button>
+		</div>
+	</div>
+	<div id="blocklyDiv"></div>
+	<div id="blocklyCode" style="display: none;">
+		<h1>Code Generated:</h1>
+		<div id="blocklyCodeTick">
+			<input type="checkbox" class="xmlOption">
+			<text>Generate XML instead of minecraft code.</text>
+		</div>
+		<textarea id="code" readonly placeholder="# Code will be here..."></textarea>
+	</div>
+
+	<xml xmlns="https://developers.google.com/blockly/xml" id="blocklyToolbox" style="display: none">
+		<category name="Inputs" colour="40">
+			<block type="math_number">
+				<field name="NUM">123</field>
+			</block>
+			<block type="minecraft_number_range">
+				<value name="b1">
+				  <shadow type="math_number">
+					<field name="NUM">1</field>
+				  </shadow>
+				</value>
+			  </block>
+			<block type="text"></block>
+			<block type="logic_boolean"></block>
+			<block type="lists_create_with"></block>
+			<block type="minecraft_color_limited"></block>
+		</category>
+		<sep></sep>
+		<category name="Logic" colour="%{BKY_LOGIC_HUE}">
+			<block type="controls_if">
+				<value name="TIMES">
+					<block type="math_number">
+						<field name="NUM">10</field>
+					</block>
+				</value>
+			</block>
+			<block type="controls_block">
+				<value name="x">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+						  <shadow type="math_number">
+							<field name="NUM">0</field>
+						  </shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="y">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+						  <shadow type="math_number">
+							<field name="NUM">0</field>
+						  </shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="z">
+					<shadow type="minecraft_coordinate">
+					  <field name="pos"></field>
+					  <value name="number">
+						<shadow type="math_number">
+						  <field name="NUM">0</field>
+						</shadow>
+					  </value>
+					</shadow>
+				</value>
+				<value name="block">
+					<shadow type="text">
+						<field name="TEXT">grass_block</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="controls_blocks">
+				<value name="x1">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+						  <shadow type="math_number">
+							<field name="NUM">0</field>
+						  </shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="y1">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+						  <shadow type="math_number">
+							<field name="NUM">0</field>
+						  </shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="z1">
+					<shadow type="minecraft_coordinate">
+					  <field name="pos"></field>
+					  <value name="number">
+						<shadow type="math_number">
+						  <field name="NUM">0</field>
+						</shadow>
+					  </value>
+					</shadow>
+				</value>
+				<value name="x2">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+						  <shadow type="math_number">
+							<field name="NUM">0</field>
+						  </shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="y2">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+						  <shadow type="math_number">
+							<field name="NUM">0</field>
+						  </shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="z2">
+					<shadow type="minecraft_coordinate">
+					  <field name="pos"></field>
+					  <value name="number">
+						<shadow type="math_number">
+						  <field name="NUM">0</field>
+						</shadow>
+					  </value>
+					</shadow>
+				</value>
+				<value name="x3">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+						  <shadow type="math_number">
+							<field name="NUM">0</field>
+						  </shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="y3">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+						  <shadow type="math_number">
+							<field name="NUM">0</field>
+						  </shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="z3">
+					<shadow type="minecraft_coordinate">
+					  <field name="pos"></field>
+					  <value name="number">
+						<shadow type="math_number">
+						  <field name="NUM">0</field>
+						</shadow>
+					  </value>
+					</shadow>
+				</value>
+			</block>
+		</category>
+		<sep></sep>
+		<category name="Minecraft: World" colour="%{BKY_MINECRAFT_WORLD_HUE}">
+			<block type="minecraft_setblock">
+				<value name="id">
+					<shadow type="text">
+						<field name="TEXT">grass_block</field>
+					</shadow>
+				</value>
+				<value name="x">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+							<shadow type="math_number">
+								<field name="NUM">10</field>
+							</shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="y">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+							<shadow type="math_number">
+								<field name="NUM">10</field>
+							</shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="z">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+							<shadow type="math_number">
+								<field name="NUM">10</field>
+							</shadow>
+						</value>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_fill">
+				<value name="id">
+					<shadow type="text">
+						<field name="TEXT">stone</field>
+					</shadow>
+				</value>
+				<value name="x1">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+							<shadow type="math_number">
+								<field name="NUM">10</field>
+							</shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="y1">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+							<shadow type="math_number">
+								<field name="NUM">10</field>
+							</shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="z1">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+							<shadow type="math_number">
+								<field name="NUM">10</field>
+							</shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="x2">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+							<shadow type="math_number">
+								<field name="NUM">20</field>
+							</shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="y2">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+							<shadow type="math_number">
+								<field name="NUM">20</field>
+							</shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="z2">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+							<shadow type="math_number">
+								<field name="NUM">20</field>
+							</shadow>
+						</value>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_weather">
+				<field name="weather">clear</field>
+				<value name="seconds">
+					<shadow type="math_number">
+						<field name="NUM">30</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_time">
+				<mutation seconds="false"></mutation>
+			</block>
+			<block type="minecraft_add_time">
+				<value name="seconds">
+					<shadow type="math_number">
+						<field name="NUM">30</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_gamerule">
+				<mutation value="true"></mutation>
+			</block>
+			<block type="minecraft_clone">
+				<value name="x1">
+				  <shadow type="minecraft_coordinate">
+					<field name="pos"></field>
+					<value name="number">
+					  <shadow type="math_number">
+						<field name="NUM">10</field>
+					  </shadow>
+					</value>
+				  </shadow>
+				</value>
+				<value name="y1">
+				  <shadow type="minecraft_coordinate">
+					<field name="pos"></field>
+					<value name="number">
+					  <shadow type="math_number">
+						<field name="NUM">10</field>
+					  </shadow>
+					</value>
+				  </shadow>
+				</value>
+				<value name="z1">
+				  <shadow type="minecraft_coordinate">
+					<field name="pos"></field>
+					<value name="number">
+					  <shadow type="math_number">
+						<field name="NUM">10</field>
+					  </shadow>
+					</value>
+				  </shadow>
+				</value>
+				<value name="x2">
+				  <shadow type="minecraft_coordinate">
+					<field name="pos"></field>
+					<value name="number">
+					  <shadow type="math_number">
+						<field name="NUM">20</field>
+					  </shadow>
+					</value>
+				  </shadow>
+				</value>
+				<value name="y2">
+				  <shadow type="minecraft_coordinate">
+					<field name="pos"></field>
+					<value name="number">
+					  <shadow type="math_number">
+						<field name="NUM">20</field>
+					  </shadow>
+					</value>
+				  </shadow>
+				</value>
+				<value name="z2">
+				  <shadow type="minecraft_coordinate">
+					<field name="pos"></field>
+					<value name="number">
+					  <shadow type="math_number">
+						<field name="NUM">20</field>
+					  </shadow>
+					</value>
+				  </shadow>
+				</value>
+				<value name="x3">
+				  <shadow type="minecraft_coordinate">
+					<field name="pos"></field>
+					<value name="number">
+					  <shadow type="math_number">
+						<field name="NUM">50</field>
+					  </shadow>
+					</value>
+				  </shadow>
+				</value>
+				<value name="y3">
+				  <shadow type="minecraft_coordinate">
+					<field name="pos"></field>
+					<value name="number">
+					  <shadow type="math_number">
+						<field name="NUM">50</field>
+					  </shadow>
+					</value>
+				  </shadow>
+				</value>
+				<value name="z3">
+				  <shadow type="minecraft_coordinate">
+					<field name="pos"></field>
+					<value name="number">
+					  <shadow type="math_number">
+						<field name="NUM">50</field>
+					  </shadow>
+					</value>
+				  </shadow>
+				</value>
+			  </block>
+			  <block type="minecraft_set">
+				<mutation xmlns="http://www.w3.org/1999/xhtml" dif="true"></mutation>
+			  </block>
+			  <block type="minecraft_bossbar">
+				<field name="do">add</field>
+				<value name="bossbar">
+				  <shadow type="text">
+					<field name="TEXT">bossHealth</field>
+				  </shadow>
+				</value>
+			  </block>
+				<block type="minecraft_bossbar_dropdown">
+					<mutation c="true"></mutation>
+				  <field name="set">color</field>
+				  <value name="bossbar">
+					<shadow type="text">
+					  <field name="TEXT">bossHealth</field>
+					</shadow>
+				  </value>
+				</block>
+				<block type="minecraft_summon">
+					<value name="entity">
+					  <shadow type="text">
+						<field name="TEXT">zombie</field>
+					  </shadow>
+					</value>
+					<value name="x">
+					  <shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+						  <shadow type="math_number">
+							<field name="NUM">0</field>
+						  </shadow>
+						</value>
+					  </shadow>
+					</value>
+					<value name="y">
+					  <shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+						  <shadow type="math_number">
+							<field name="NUM">0</field>
+						  </shadow>
+						</value>
+					  </shadow>
+					</value>
+					<value name="z">
+					  <shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+						  <shadow type="math_number">
+							<field name="NUM">0</field>
+						  </shadow>
+						</value>
+					  </shadow>
+					</value>
+					<value name="nbt">
+						<shadow type="nbt_compound">
+							<mutation items=0></mutation>
+						</shadow>
+					</value>
+				  </block>
+		</category>
+		<category name="Minecraft: Players" colour="%{BKY_MINECRAFT_SOCIAL_HUE}">
+			<block type="minecraft_player">
+				<field name="player">@p</field>
+			</block>
+			<block type="minecraft_selector">
+				<value name="BEGIN">
+					<shadow type="minecraft_player">
+						<field name="NAME">@p</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_selector_dropdown">
+			    <mutation xmlns="http://www.w3.org/1999/xhtml" is="true" sort="false" value="false" gm="true"></mutation>
+			</block>
+			<block type="minecraft_say">
+				<value name="string">
+					<shadow type="text">
+						<field name="TEXT">Hello!</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_msg">
+				<value name="player">
+					<shadow type="minecraft_player">
+						<field name="NAME">@p</field>
+					</shadow>
+				</value>
+				<value name="text">
+					<shadow type="text">
+						<field name="TEXT">Hello!</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_teammsg">
+				<value name="team">
+				  <shadow type="text">
+					<field name="TEXT">red</field>
+				  </shadow>
+				</value>
+				<value name="message">
+				  <shadow type="text">
+					<field name="TEXT">Team Red!</field>
+				  </shadow>
+				</value>
+			  </block>
+			  <block type="minecraft_title">
+				<field name="title">title</field>
+				<value name="text">
+					<shadow type="json_create">
+					  <mutation items="1"></mutation>
+					  <value name="ADD0">
+						<shadow type="json_key">
+						  <value name="key">
+							<shadow type="text">
+							  <field name="TEXT">text</field>
+							</shadow>
+						  </value>
+						  <value name="value">
+							<shadow type="text" id="!]0O7p|%3Y^!ARxX`lhn">
+							  <field name="TEXT">Welcome!</field>
+							</shadow>
+						  </value>
+					  </shadow>
+					  </value>
+				  </shadow>
+				  </value>
+				  <value name="Show">
+					<shadow type="minecraft_player" id=".;k[+l7IHG}P)dMfy1t*">
+					  <field name="player">@p</field>
+					</shadow>
+				  </value>
+			  </block>
+			<block type="minecraft_coordinate">
+				<field name="pos"></field>
+				<value name="number">
+					<shadow type="math_number">
+						<field name="NUM">10</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_teleport_coordinate">
+				<value name="player">
+					<shadow type="minecraft_player">
+						<field name="player">@p</field>
+					</shadow>
+				</value>
+				<value name="x">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+							<shadow type="math_number">
+								<field name="NUM">10</field>
+							</shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="y">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+							<shadow type="math_number">
+								<field name="NUM">10</field>
+							</shadow>
+						</value>
+					</shadow>
+				</value>
+				<value name="z">
+					<shadow type="minecraft_coordinate">
+						<field name="pos"></field>
+						<value name="number">
+							<shadow type="math_number">
+								<field name="NUM">10</field>
+							</shadow>
+						</value>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_teleport_entity">
+				<value name="player">
+					<shadow type="minecraft_player">
+						<field name="player">@a</field>
+					</shadow>
+				</value>
+				<value name="destination">
+					<shadow type="minecraft_player">
+						<field name="player">@p</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_effect">
+				<field name="do">give</field>
+				<field name="effect">speed</field>
+				<field name="amplifier">1</field>
+				<field name="seconds">10</field>
+				<field name="hideParticles">false</field>
+				<value name="player">
+					<shadow type="minecraft_player">
+						<field name="player">@p</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_give">
+				<field name="amount">10</field>
+				<value name="give">
+					<shadow type="text">
+						<field name="TEXT">diamond</field>
+					</shadow>
+				</value>
+				<value name="player">
+					<shadow type="minecraft_player">
+						<field name="player">@p</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_clear">
+				<mutation amount="false"></mutation>
+				<mutation clear="false"></mutation>
+				<field name="inventory">inventory</field>
+				<field name="amount">10</field>
+				<value name="clear">
+					<shadow type="text">
+						<field name="TEXT">stone</field>
+					</shadow>
+				</value>
+				<value name="player">
+					<shadow type="minecraft_player">
+						<field name="player">@p</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_gamemode">
+				<field name="gamemode">survival</field>
+				<value name="player">
+					<shadow type="minecraft_player">
+						<field name="player">@p</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_title_time">
+				<value name="player">
+					<shadow type="minecraft_player">
+						<field name="player">@p</field>
+					</shadow>
+				</value>
+				<value name="fadeIn">
+				  <shadow type="math_number">
+					<field name="NUM">0.5</field>
+				  </shadow>
+				</value>
+				<value name="stay">
+				  <shadow type="math_number">
+					<field name="NUM">4</field>
+				  </shadow>
+				</value>
+				<value name="fadeOut">
+				  <shadow type="math_number">
+					<field name="NUM">0.5</field>
+				  </shadow>
+				</value>
+			  </block>
+			  <block type="minecraft_title_clear"><value name="player">
+				<shadow type="minecraft_player">
+					<field name="player">@p</field>
+				</shadow>
+			</value></block>
+			  <block type="minecraft_spawnpoint">
+				<value name="player">
+					<shadow type="minecraft_player">
+						<field name="player">@p</field>
+					</shadow>
+				</value>
+				<value name="x">
+				  <shadow type="minecraft_coordinate">
+					<field name="pos">~</field>
+					<value name="number">
+					  <shadow type="math_number">
+						<field name="NUM">5</field>
+					  </shadow>
+					</value>
+				  </shadow>
+				</value>
+				<value name="y">
+				  <shadow type="minecraft_coordinate">
+					<field name="pos">~</field>
+					<value name="number">
+					  <shadow type="math_number">
+						<field name="NUM">5</field>
+					  </shadow>
+					</value>
+				  </shadow>
+				</value>
+				<value name="z">
+				  <shadow type="minecraft_coordinate">
+					<field name="pos">~</field>
+					<value name="number">
+					  <shadow type="math_number">
+						<field name="NUM">5</field>
+					  </shadow>
+					</value>
+				  </shadow>
+				</value>
+			  </block>
+			  <block type="minecraft_setworldspawn">
+				<value name="x">
+				  <shadow type="minecraft_coordinate">
+					<field name="pos">~</field>
+					<value name="number">
+					  <shadow type="math_number">
+						<field name="NUM">0</field>
+					  </shadow>
+					</value>
+				  </shadow>
+				</value>
+				<value name="y">
+				  <shadow type="minecraft_coordinate">
+					<field name="pos">~</field>
+					<value name="number">
+					  <shadow type="math_number">
+						<field name="NUM">0</field>
+					  </shadow>
+					</value>
+				  </shadow>
+				</value>
+				<value name="z">
+				  <shadow type="minecraft_coordinate">
+					<field name="pos">~</field>
+					<value name="number">
+					  <shadow type="math_number">
+						<field name="NUM">0</field>
+					  </shadow>
+					</value>
+				  </shadow>
+				</value>
+			  </block>
+			  <block type="minecraft_kill">
+				<value name="player">
+					<shadow type="minecraft_player">
+						<field name="player">@p</field>
+					</shadow>
+				</value>
+			  </block>
+			  <block type="minecraft_xp">
+				<value name="number">
+				  <shadow type="math_number">
+					<field name="NUM">10</field>
+				  </shadow>
+				</value>
+				<value name="player">
+					<shadow type="minecraft_player">
+						<field name="player">@p</field>
+					</shadow>
+				</value>
+			  </block>
+		</category>
+		<category name="Minecraft: Scoreboard" colour="%{BKY_MINECRAFT_SCOREBOARD_HUE}">
+			<block type="minecraft_scoreboard_addremove">
+				<mutation extra="true"></mutation>
+				<field name="operation">add</field>
+				<value name="id">
+					<shadow type="text">
+						<field name="TEXT">scores</field>
+					</shadow>
+				</value>
+				<value name="name">
+					<shadow type="text">
+						<field name="TEXT">Scores</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_scoreboard_setdisplay">
+				<field name="setdisplay">sidebar</field>
+				<value name="id">
+					<shadow type="text">
+						<field name="TEXT">scores</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_scoreboard_display">
+				<value name="id">
+				  <shadow type="text">
+					<field name="TEXT">scores</field>
+				  </shadow>
+				</value>
+				<value name="name">
+				  <shadow type="text">
+					<field name="TEXT">Points</field>
+				  </shadow>
+				</value>
+			  </block>
+			  <block type="minecraft_scoreboard_num_ar">
+				<field name="do">add</field>
+				<value name="player">
+					<shadow type="minecraft_player">
+						<field name="player">@a</field>
+					</shadow>
+				</value>
+				<field name="number">0</field>
+				<value name="id">
+				  <shadow type="text">
+					<field name="TEXT">scores</field>
+				  </shadow>
+				</value>
+			  </block>
+			  <block type="minecraft_scoreboard_reset">
+				<field name="scores">all</field>
+				<value name="player">
+					<shadow type="minecraft_player">
+						<field name="player">@a</field>
+					</shadow>
+				</value>
+			  </block>
+			  <block type="minecraft_scoreboard_operation">
+				<field name="operation">+=</field>
+				<field name="source">0</field>
+				<value name="player">
+					<shadow type="minecraft_player">
+						<field name="player">@a</field>
+					</shadow>
+				</value>
+				<value name="sourceplayer">
+					<shadow type="minecraft_player">
+						<field name="player">@a</field>
+					</shadow>
+				</value>
+				<value name="id">
+				  <shadow type="text">
+					<field name="TEXT">scores</field>
+				  </shadow>
+				</value>
+				<value name="sourceid">
+				  <shadow type="text">
+					<field name="TEXT">sourceScores</field>
+				  </shadow>
+				</value>
+			  </block>
+			  <block type="minecraft_selector_scores"></block>
+			<block type="minecraft_selector_scores_entry">
+				<value name="score">
+				  <shadow type="text">
+					<field name="TEXT">myscore</field>
+				  </shadow>
+				</value>
+				<value name="number">
+				  <shadow type="math_number">
+					<field name="NUM">10</field>
+				  </shadow>
+				</value>
+			  </block>
+		</category>
+		<sep></sep>
+		<category name="JSON" colour=%{BKY_JSON_HUE}>
+			<block type="json_create"></block>
+			<block type="json_key">
+				<value name="key">
+					<shadow type="text">
+						<field name="TEXT">message</field>
+					</shadow>
+				</value>
+			</block>
+		</category>
+		<category name="NBT" colour=%{BKY_NBT_HUE}>
+			<block type="nbt_byte">
+			  <field name="number">0</field>
+			</block>
+			<block type="nbt_short">
+			  <field name="number">0</field>
+			</block>
+			<block type="nbt_int">
+			  <field name="number">0</field>
+			</block>
+			<block type="nbt_long">
+			  <field name="number">0</field>
+			</block>
+			<block type="nbt_float">
+			  <field name="number">0</field>
+			</block>
+			<block type="nbt_double">
+			  <field name="number">0</field>
+			</block>
+			<block type="nbt_string">
+			  <field name="string">Hello!</field>
+			</block>
+			<block type="nbt_boolean">
+			  <field name="bool">true</field>
+			</block>
+			<block type="nbt_list"></block>
+			<block type="nbt_compound"></block>
+			<block type="nbt_compound_tag">
+				<value name="tag">
+					<shadow type="text">
+						<field name="TEXT">tag</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="nbt_byte_array"></block>
+			<block type="nbt_int_array"></block>
+			<block type="nbt_long_array"></block>
+		  </category>
+		<category name="Miscellaneous" colour="#666">
+			<block type="comment">
+				<value name="comment">
+					<shadow type="text">
+						<field name="TEXT">This is what it does.</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="minecraft_function">
+				<value name="function">
+				  <shadow type="text">
+					<field name="TEXT">game:start</field>
+				  </shadow>
+				</value>
+			</block>
+		</category>
+	</xml>
+</body>
+
+</html>

@@ -1,0 +1,302 @@
+#blockTitle {
+	height: 36px !important;
+	background-color: rgb(41, 41, 41);
+	color: white;
+	border: 2px solid white;
+	font-size: 25px;
+}
+
+.githubLink {
+	color: rgb(240, 219, 219);
+	font-size: 17px;
+}
+
+#blockTitle div left {
+	text-align: left;
+	left: 10px;
+}
+
+#blockTitle div right {
+	text-align: right;
+	right: 10px;
+}
+
+#blocklyDiv {
+	height: calc(100% - 90px);
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	background-color: #1e1e1e;
+}
+
+html {
+	height: 100%;
+	font-family: Segoe UI !important;
+}
+
+#tabs {
+	overflow: hidden;
+	background-color: #1e1e1e; /* Match with Blockly's theme! */
+	height: 50px !important;
+}
+
+#tabs button {
+	background-color: #29292a; /* Match with Blockly's theme! + lighter */
+	text-align: center !important;
+	float: left;
+	border: none;
+	outline: 2px solid white;
+	cursor: pointer;
+	padding: 0.9% 1.5%;
+	transition: 0.3s;
+	color: white;
+	font-weight: 700;
+	font-size: 16px;
+	font-family: inherit;
+	transition: 0.4s;
+	white-space: nowrap;
+	height: 46px;
+	margin: 2px;
+}
+
+#tabs button:hover, #tabs button.active {
+	background-color: #eeeeee !important;
+	color: black;
+	/* outline: 2px solid black; */
+}
+
+#saveTab {
+	background-color: #292c32 !important;
+	width: calc(6% - 4px);
+}
+
+#loadTab {
+	background-color: #31312a !important;
+	width: calc(6% - 4px);
+}
+
+#exportTab {
+	background-color: #29312a !important;
+	width: calc(8% - 4px);
+}
+
+#importTab {
+	background-color: #312929 !important;
+	width: calc(7% - 4px);
+}
+
+#savesTab {
+	background-color: #312929 !important;
+	width: calc(10% - 4px);
+}
+
+#blocksTab {
+	background-color: #293132 !important;
+	width: calc(8% - 4px);
+}
+
+#codeTab {
+	background-color: #312932 !important;
+	width: calc(10% - 4px);
+}
+
+#collTab {
+	background-color: #312d2a !important;
+	width: calc(15% - 4px);
+}
+
+#icolTab {
+	background-color: #3d2932 !important;
+	width: calc(14% - 4px);
+}
+
+#allTab {
+	width: calc(16% - 4px) !important;
+	font-size: 14.5px !important;
+}
+
+#blocklyCode {
+	height: calc(100% - 86px);
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+
+#blocklyCode h1 {
+	color: white;
+	text-align: center;
+}
+
+#blocklyCode textarea {
+	margin-left: auto;
+	margin-right: auto;
+	height: 80%;
+	width: 99.5%;
+	background-color: #29292a;
+	color: white;
+	font-size: 18px;
+	resize: none;
+}
+
+#title {
+	display: inline;
+	float: left;
+	color: white;
+	overflow: auto;
+	font-size: 20px;
+	margin-top: 0;
+}
+
+#blocklyCodeTick {
+	background-color: #6ab7ff;
+	color: black;
+}
+
+version {
+	position: fixed;
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	bottom: 3px;
+	left: 3px;
+	z-index: 999;
+}
+
+/* Dialogs */
+
+.dialog {
+	position: fixed;
+	z-index: 1000;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.25);
+	display: none;
+}
+
+.dialogBox {
+	position: relative;
+	background-color: #383838;
+	border-style: solid;
+	border-color: white;
+	width: 400px;
+	height: 250px;
+	top: calc(50% - 125px);
+	left: calc(50% - 200px);
+	color: white;
+}
+
+.dialogTitle {
+	position: relative;
+	top: 0;
+	background-color: #505050;
+	width: 400px;
+	height: 37.5px;
+	line-height: 2px;
+}
+
+.dialogBottom {
+	position: relative;
+	bottom: 0;
+	background-color: #202020;
+	width: 400px;
+	height: 37.5px;
+	margin: auto;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
+}
+
+.dialogExitBtn {
+	position: fixed;
+	z-index: 1001;
+	background-color: #ff1201;
+	font-size: 100%;
+	float: right;
+	width: 30px;
+	height: 30px;
+	top: calc(50% - 140px);
+	left: calc(50% + 190px);
+	border-style: solid;
+	border-color: rgb(209, 209, 209);
+	transition: 0.2s;
+}
+
+.dialogExitBtn:hover {
+	background-color: rgb(255, 127, 127);
+	color: black;
+}
+
+.dialogTitleText {
+	text-align: center;
+	font-size: 125%;
+}
+
+.dialogMessage {
+	height: 175px;
+	line-height: 175px;
+	overflow-y: auto;
+}
+
+.dialogMessage, .dialogTitle {
+	text-align: center;
+	font-size: 150%;
+}
+
+dt {
+	line-height: normal;
+	vertical-align: middle;
+ 	display: inline-block;
+}
+
+.dialogBottom button {
+	background-color: #c9c9c9;
+	border-color: white;
+	width: 95px;
+	height: 30px;
+	margin: auto;
+	font-size: 20px;
+	font-weight: 700;
+	border-style: solid;
+	text-align: center;
+	font-family: 'Segoe UI';
+	line-height: 15px;
+	transition: 0.5s;
+}
+
+.dialogBottom button:hover {
+	background-color: #3a3a3a;
+	color: white;
+}
+
+.dialogMessage input {
+	background-color: #c9c9c9;
+	border-color: black;
+	width: 95px;
+	height: 30px;
+	margin: auto;
+	font-size: 20px;
+	font-weight: 700;
+	border-style: solid;
+	text-align: center;
+	font-family: 'Segoe UI';
+	line-height: 15px;
+	transition: 0.5s;
+	width: 350px;
+}
+
+.dialogMessage input:focus {
+	background-color: #3a3a3a;
+	border-color: white;
+	color: white;
+}
+
+#switchers {
+	right: 0;
+}
