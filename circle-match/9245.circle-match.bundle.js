@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcircle_match=self.webpackChunkcircle_match||[]).push([[9245],{9245:e=>{e.exports=JSON.parse('{"moves":23,"targets":[15000,32000,40000],"width":4,"height":4,"colours":3,"hard":0,"goals":[{"type":"blue_circle","amount":70}],"tilemap":["*0*S,*2*S,*2*S,W1*S","*2,*0,W1,*2","*2,W1,*0,*2","W1,*2,*2,*0"],"cannons":[]}')}}]);

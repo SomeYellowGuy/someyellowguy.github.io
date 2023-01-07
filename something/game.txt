@@ -1,0 +1,28 @@
+Let's make a game!
+	name:Coin Clicker
+	desc:The original Coin Clicker. The one in Scratch copied me! :(
+
+Resources
+  *coin
+    name:Coin
+    desc:A  c o i n  from Coin Clicker!
+
+Buildings
+  *cursor
+	name:Cursor
+	desc:Gives 1 coin per click!
+  *fb
+	name:Family Business
+	desc:Gives 500 coins per click!
+
+Buttons
+	*coinButton
+		name:Create some coins!
+		on click:anim icon wobble
+		on click:yield 1 coin
+		icon:stuff/bunny.png
+		no text
+		class:bigButton hasFlares
+		icon class:shadowed
+		tooltip origin:bottom
+		tooltip class:red
