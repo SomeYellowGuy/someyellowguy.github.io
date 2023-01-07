@@ -20,7 +20,7 @@ Buttons
 		name:Create some coins!
 		on click:anim icon wobble
 		on click:yield 1 coin
-		icon:stuff/bunny.png
+		icon:https://vishmitasuvarna.github.io/something/coinButton.svg
 		no text
 		class:bigButton hasFlares
 		icon class:shadowed
