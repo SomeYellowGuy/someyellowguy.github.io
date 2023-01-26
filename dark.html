@@ -1,117 +1,138 @@
 <style>
-@font-face {
-              font-family: 'Segoe UI';
-              src: url('game/segoeui.woff') format('woff');
-              font-weight: normal;
-              font-style: normal;
-			  
-           }
-body {
-      font-family: Segoe UI;
-	  color: white;
-	  background-color: #1b1b1b;
-}
-.option1 {
-      font-family: Segoe UI;
-	  background-color: rgba(255,0,0,0.9);
-	  border: 3px solid #dd0000;
-	  font-size: 20px;
-	  text-align: center;
-	  padding: 10px 399px;
-	  color: #1b1b1b;
-	  transition-duration: 0.3s;
-}
-.option1:hover {
-      color: red;
-	  background-color: #1b1b1b;
-}
-.option2 {
-      font-family: Segoe UI;
-	  background-color: #ffc53d;
-	  border: 3px solid #cc8f00;
-	  font-size: 20px;
-	  text-align: center;
-	  padding: 10px 381.9px;
-	  color: #1b1b1b;
-	  transition-duration: 0.3s;
-}
-.option2:hover {
-      color: #ffc53d;
-	  background-color: #1b1b1b;
-}
-.option3 {
-      font-family: Segoe UI;
-	  background-color: #3db1ff;
-	  border: 3px solid #0069cc;
-	  font-size: 20px;
-	  text-align: center;
-	  padding: 10px 313px;
-	  color: #1b1b1b;
-	  transition-duration: 0.3s;
-}
-.option3:hover {
-      color: #3d81ff;
-	  background-color: #1b1b1b;
-}
-.option4 {
-      font-family: Segoe UI;
-	  background-color: #b13dff;
-	  border: 3px solid #8b00cc;
-	  font-size: 20px;
-	  text-align: center;
-	  padding: 10px 468px;
-	  color: #1b1b1b;
-	  transition-duration: 0.3s;
-}
-.option4:hover {
-      color: #b13dff;
-	  background-color: #1b1b1b;
-}
+	@font-face {
+		font-family: 'Segoe UI';
+		src: url('game/segoeui.woff') format('woff');
+		font-weight: normal;
+		font-style: normal;
 
-.option5 {
-      font-family: Segoe UI;
-	  background-color: #3dffa4;
-	  border: 3px solid #00cc9c;
-	  font-size: 20px;
-	  text-align: center;
-	  padding: 10px 468px;
-	  color: #1b1b1b;
-	  transition-duration: 0.3s;
-}
-.option5:hover {
-      color: #3dffff;
-	  background-color: #1b1b1b;
-}
+	}
 
-.link {
-	color: white;
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	animation-duration: 0.7s;
-}
-.link:hover {
-	color: #B2B2B2;
-}
+	body {
+		font-family: Segoe UI;
+		color: white;
+		background-color: #1b1b1b;
+	}
+
+	.option1 {
+		font-family: Segoe UI;
+		background-color: rgba(255, 0, 0, 0.9);
+		border: 3px solid #dd0000;
+		font-size: 20px;
+		text-align: center;
+		color: #1b1b1b;
+		transition-duration: 0.3s;
+	}
+
+	.option1:hover {
+		color: red;
+		background-color: #1b1b1b;
+	}
+
+	.option2 {
+		font-family: Segoe UI;
+		background-color: #ffc53d;
+		border: 3px solid #cc8f00;
+		font-size: 20px;
+		text-align: center;
+		color: #1b1b1b;
+		transition-duration: 0.3s;
+	}
+
+	.option2:hover {
+		color: #ffc53d;
+		background-color: #1b1b1b;
+	}
+
+	.option3 {
+		font-family: Segoe UI;
+		background-color: #3db1ff;
+		border: 3px solid #0069cc;
+		font-size: 20px;
+		text-align: center;
+		color: #1b1b1b;
+		transition-duration: 0.3s;
+	}
+
+	.option3:hover {
+		color: #3d81ff;
+		background-color: #1b1b1b;
+	}
+
+	.option4 {
+		font-family: Segoe UI;
+		background-color: #b13dff;
+		border: 3px solid #8b00cc;
+		font-size: 20px;
+		text-align: center;
+		color: #1b1b1b;
+		transition-duration: 0.3s;
+	}
+
+	.option4:hover {
+		color: #b13dff;
+		background-color: #1b1b1b;
+	}
+
+	.option5 {
+		font-family: Segoe UI;
+		background-color: #3dffa4;
+		border: 3px solid #00cc9c;
+		font-size: 20px;
+		text-align: center;
+		color: #1b1b1b;
+		transition-duration: 0.3s;
+	}
+
+	.option5:hover {
+		color: #3dffff;
+		background-color: #1b1b1b;
+	}
+
+	.link {
+		color: white;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		animation-duration: 0.7s;
+	}
+
+	.link:hover {
+		color: #B2B2B2;
+	}
+
+	button {
+		width: 60%;
+		height: 55px
+	}
 </style>
 <title>Hello! Welcome to my site!</title>
-<html><body><head>
-	<link rel="icon" type="image/png" href="/iconDark.png"/>
-<h1>Hello! Welcome to my site!</h1>
-<p>You may like these games/programs:</p>
-<h3>You should try!</h3>
-<button class="option5" onclick="window.location.href = 'circle-match/index.html';">Circle Match [ <i>BETA</i> ]</button>
-<h3>Ancient Stuff</h3>
-<button class="option1" onclick="window.location.href = 'game/index.html';">(ANCIENT) Game (Square Move) [ <i>BETA 1.3</i> ]</button>
-<p></p>
-<button class="option2" onclick="window.location.href = 'scratch3/index.html';">(ANCIENT) My version of Scratch 3.0 [ <i>BETA 1.1</i> ]</button>
-<p></p>
-<h3>Normal Stuff, i guess</h3>
-<button class="option3" onclick="window.location.href = 'mdb/index.html';">Minecraft Datapack Generator (Blockly) [ <i>BETA 1.8.1</i> ]</button>
-<p></p>
-<button class="option4" onclick="window.location.href = 'if-to-switch/index.html';">If to Switch [ <i>1.1</i> ]</button>
-</head>
-</script>
+<html>
+
+<body>
+
+	<head>
+		<link rel="icon" type="image/png" href="/iconDark.png" />
+		<h1>Hello! Welcome to my site!</h1>
+		<p>You may like these games/programs:</p>
+		<h3>You should try!</h3>
+		<button class="option5" onclick="window.location.href = 'circle-match';">Circle Match [ <i>BETA</i> ]</button>
+		<p></p>
+		<button class="option5" onclick="window.location.href = 'circle-match-level-editor';">Circle Match Level Editor
+			[ <i>1.0</i> ]</button>
+		<h3>Normal Stuff, i guess</h3>
+		<button class="option3" onclick="window.location.href = 'mdb';">Minecraft Datapack Generator (Blockly) [ <i>BETA
+				1.8.1</i> ]</button>
+		<p></p>
+		<button class="option4" onclick="window.location.href = 'if-to-switch';">If to Switch [ <i>1.1</i> ]</button>
+		<h3>Ancient Stuff</h3>
+		<button class="option1" onclick="window.location.href = 'game';">Game (Square Move) [ <i>BETA 1.3</i> ]</button>
+		<p></p>
+		<button class="option2" onclick="window.location.href = 'scratch3';">My version of Scratch 3.0 [ <i>BETA 1.1</i>
+			]</button>
+		<p></p>
+	</head>
+	</script>
 </body>
 <a class="link" href="light.html" target=_self>want light?</a>
+
 </html>
