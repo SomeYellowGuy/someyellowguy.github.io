@@ -391,25 +391,25 @@ let logic = function()
 
 			    if (Game.avgNewLevelsPer >= 1000000000000) {
 				barPer = 10000000000000;
-				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(210deg) !important;");
+				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(250deg) !important;");
 			    } else if (Game.avgNewLevelsPer >= 100000000000) {
 				barPer = 1000000000000;
-				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(200.5deg) !important;");
+				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(240.5deg) !important;");
 			    } else if (Game.avgNewLevelsPer >= 10000000000) {
 				barPer = 100000000000;
-				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(190deg) !important;");
+				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(230deg) !important;");
 			    } else if (Game.avgNewLevelsPer >= 1000000000) {
 				barPer = 10000000000;
-				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(180deg) !important;");
+				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(220deg) !important;");
 			    } else if (Game.avgNewLevelsPer >= 100000000) {
 				barPer = 1000000000;
-				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(180deg) !important;");
+				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(210deg) !important;");
 			    } else if (Game.avgNewLevelsPer >= 10000000) {
 				barPer = 100000000;
-				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(157.5deg) !important;");
+				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(200.5deg) !important;");
 			    } else if (Game.avgNewLevelsPer >= 1000000) {
 				barPer = 10000000;
-				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(135deg) !important;");
+				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(190deg) !important;");
 			    } else if (Game.avgNewLevelsPer >= 100000) {
 				barPer = 1000000;
 				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(180deg) !important;");
