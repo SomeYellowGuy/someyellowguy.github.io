@@ -383,14 +383,18 @@ let logic = function()
 			var ascendNowToOwn=Math.floor(Game.HowMuchPrestige(Game.cookiesReset+Game.cookiesEarned));
 			var ascendNowToGet=ascendNowToOwn-Math.floor(chipsOwned);
 			var nextChipAt=Game.HowManyCookiesReset(Math.floor(chipsOwned+ascendNowToGet+1))-Game.HowManyCookiesReset(Math.floor(chipsOwned+ascendNowToGet));
-			var cookiesToNext=Game.HowManyCookiesReset(ascendNowToOwn+1)-(Game.cookiesEarned+Game.cookiesReset);
-			var percent=1-(cookiesToNext/nextChipAt);
+			var cookiesToNext = Game.HowManyCookiesReset(ascendNowToOwn + 1) - (Game.cookiesEarned + Game.cookiesReset);
 			
-			// ! ADDED ! ///////////////////////////
+			// !
+			
+			Game.cookiesToBarFull = Game.HowManyCookiesReset(Math.ceil((ascendNowToOwn + 1) / barPer) * barPer) - (Game.cookiesEarned + Game.cookiesReset);
+			Game.nextBarFullAt = Game.HowManyCookiesReset(nextBarPerLvl) - Game.HowManyCookiesReset(Math.ceil(Math.floor(chipsOwned + ascendNowToGet + 1) / barPer - 1) * barPer)
+    
+			var percent = 1 - (Game.cookiesToBarFull / Game.nextBarFullAt);
 			
 			var newLevelsPer = ascendNowToGet - Game.oldAscendNowToGet;
 			
-			Game.avgNewLevelsPer = isNaN(Game.avgNewLevelsPer) ? 0 : ((newLevelsPer * 15) + Game.avgNewLevelsPer * 5) / 6;
+			Game.avgNewLevelsPer = isNaN(Game.avgNewLevelsPer) ? 0 : ((newLevelsPer * 3) + Game.avgNewLevelsPer * 5) / 6 * 5;
         		Game.oldAscendNowToGet = ascendNowToGet;
 			
 			var barPer = 1;
@@ -430,6 +434,8 @@ let logic = function()
 			//// ! ADDED ! /////////////////////////////////////////////
 			
 			        var displayNewLevels = '<b style="color:#';
+			        var levelsLeftToResetBar = (Math.ceil(Math.floor(chipsOwned + ascendNowToGet + 1) / barPer) * barPer) - (Math.floor(chipsOwned + ascendNowToGet))
+        			Game.cookiesToNextPer = Game.HowManyCookiesReset(ascendNowToOwn + levelsLeftToResetBar) - (Game.cookiesEarned + Game.cookiesReset);
 				if (Game.avgNewLevelsPer >= 100000) {
 				    displayNewLevels += 'ff0000;">' + Beautify(1000000) + ' prestige levels';
 				} else if (Game.avgNewLevelsPer >= 10000) {
@@ -473,6 +479,7 @@ let logic = function()
 				//note: cookiesToNext can be negative at higher HC amounts due to precision loss. we simply hide it in such cases, as this usually only occurs when the gap is small and rapidly overcome anyway
 				str+='<div class="line"></div>';
 				str+=loc("You need <b>%1 more cookies</b> for the next level.",Beautify(cookiesToNext))+'<br>';
+				if (barPer > 1 && levelsLeftToResetBar > 1) str += "You need <b>"+Beautify(Game.cookiesToNextPer)+" more cookies</b> for the next "+Beautify(Math.ceil(levelsLeftToResetBar))+" levels.<br>";
 			}
 			l('ascendTooltip').innerHTML=str;
 			
