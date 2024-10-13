@@ -387,6 +387,9 @@ let logic = function()
 			
 			// !
 			
+			var nextBarPerLvl = Math.ceil(Math.floor(chipsOwned + ascendNowToGet + 1) / barPer) * barPer;
+    			var currentLvl = Math.floor(chipsOwned + ascendNowToGet);
+			
 			Game.cookiesToBarFull = Game.HowManyCookiesReset(Math.ceil((ascendNowToOwn + 1) / barPer) * barPer) - (Game.cookiesEarned + Game.cookiesReset);
 			Game.nextBarFullAt = Game.HowManyCookiesReset(nextBarPerLvl) - Game.HowManyCookiesReset(Math.ceil(Math.floor(chipsOwned + ascendNowToGet + 1) / barPer - 1) * barPer)
     
