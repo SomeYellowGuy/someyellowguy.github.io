@@ -386,10 +386,13 @@ let logic = function()
 			var cookiesToNext=Game.HowManyCookiesReset(ascendNowToOwn+1)-(Game.cookiesEarned+Game.cookiesReset);
 			var percent=1-(cookiesToNext/nextChipAt);
 			
+			// ! ADDED ! ///////////////////////////
+			
+			var newLevelsPer = ascendNowToGet - Game.oldAscendNowToGet;
+			
 			Game.avgNewLevelsPer = isNaN(Game.avgNewLevelsPer) ? 0 : ((newLevelsPer * 15) + Game.avgNewLevelsPer * 5) / 6;
         		Game.oldAscendNowToGet = ascendNowToGet;
 			
-			// ! ADDED ! ///////////////////////////
 			var barPer = 1;
 
 			    if (Game.avgNewLevelsPer >= 100000) {
@@ -494,7 +497,13 @@ let logic = function()
 			//if (Game.ascendMeterPercentT<Game.ascendMeterPercent) {Game.ascendMeterPercent=0;PlaySound('snd/levelPrestige.mp3',0.5);}
 			//if (percent>=1) {Game.ascendMeter.className='';} else Game.ascendMeter.className='filling';
 		}
+		
+		// ! ADDED ! ///////////////////////////
+		
 		var ascendNowToGet = Game.oldAscendNowToGet;
+		
+		/////////////////////////////////////////
+		
 		//Game.ascendMeter.style.right=Math.floor(Math.max(0,1-Game.ascendMeterPercent)*100)+'px';
 		Game.ascendMeter.style.backgroundPosition=(-Game.T*0.5-Game.ascendMeterPercent*100)+'px';
 		Game.ascendMeter.style.transform='translate('+Math.floor(-Math.max(0,1-Game.ascendMeterPercent)*100)+'%,0px)';
