@@ -496,12 +496,6 @@ let logic = function()
 				Game.ascendNumber.style.display='none';
 			}
 			
-			if (ascendNowToGet>Game.ascendMeterLevel || Game.ascendMeterPercentT<Game.ascendMeterPercent)
-			{
-				//reset the gauge and play a sound if we gained a potential level
-				Game.ascendMeterPercent=0;
-				//PlaySound('snd/levelPrestige.mp3');//a bit too annoying
-			}
 			Game.ascendMeterLevel=ascendNowToGet;
 			Game.ascendMeterPercentT=percent;//gauge that fills up as you near your next chip
 			//if (Game.ascendMeterPercentT<Game.ascendMeterPercent) {Game.ascendMeterPercent=0;PlaySound('snd/levelPrestige.mp3',0.5);}
