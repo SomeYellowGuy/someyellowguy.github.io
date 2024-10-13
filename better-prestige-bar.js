@@ -397,7 +397,7 @@ let logic = function()
 			
 			var newLevelsPer = ascendNowToGet - Game.oldAscendNowToGet;
 			
-			Game.avgNewLevelsPer = isNaN(Game.avgNewLevelsPer) ? 0 : ((newLevelsPer * 3) + Game.avgNewLevelsPer * 5) / 6 * 5;
+			Game.avgNewLevelsPer = isNaN(Game.avgNewLevelsPer) ? 0 : ((newLevelsPer * 3) + Game.avgNewLevelsPer * 5) / 6;
         		Game.oldAscendNowToGet = ascendNowToGet;
 			
 			var barPer = 1;
