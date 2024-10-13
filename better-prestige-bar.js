@@ -389,7 +389,28 @@ let logic = function()
 			
 			var barPer = 1;
 
-			    if (Game.avgNewLevelsPer >= 100000) {
+			    if (Game.avgNewLevelsPer >= 1000000000000) {
+				barPer = 10000000000000;
+				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(210deg) !important;");
+			    } else if (Game.avgNewLevelsPer >= 100000000000) {
+				barPer = 1000000000000;
+				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(200.5deg) !important;");
+			    } else if (Game.avgNewLevelsPer >= 10000000000) {
+				barPer = 100000000000;
+				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(190deg) !important;");
+			    } else if (Game.avgNewLevelsPer >= 1000000000) {
+				barPer = 10000000000;
+				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(180deg) !important;");
+			    } else if (Game.avgNewLevelsPer >= 100000000) {
+				barPer = 1000000000;
+				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(180deg) !important;");
+			    } else if (Game.avgNewLevelsPer >= 10000000) {
+				barPer = 100000000;
+				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(157.5deg) !important;");
+			    } else if (Game.avgNewLevelsPer >= 1000000) {
+				barPer = 10000000;
+				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(135deg) !important;");
+			    } else if (Game.avgNewLevelsPer >= 100000) {
 				barPer = 1000000;
 				Game.ascendMeter.setAttribute("style", "filter: hue-rotate(180deg) !important;");
 			    } else if (Game.avgNewLevelsPer >= 10000) {
@@ -439,7 +460,19 @@ let logic = function()
 			        var displayNewLevels = '<b style="color:#';
 			        var levelsLeftToResetBar = (Math.ceil(Math.floor(chipsOwned + ascendNowToGet + 1) / barPer) * barPer) - (Math.floor(chipsOwned + ascendNowToGet))
         			Game.cookiesToNextPer = Game.HowManyCookiesReset(ascendNowToOwn + levelsLeftToResetBar) - (Game.cookiesEarned + Game.cookiesReset);
-				if (Game.avgNewLevelsPer >= 100000) {
+        			if (Game.avgNewLevelsPer >= 100000000000) {
+				    displayNewLevels += 'ff4400;">' + Beautify(1000000000000) + ' prestige levels';
+				} else if (Game.avgNewLevelsPer >= 10000000000) {
+				    displayNewLevels += 'ff3300;">' + Beautify(100000000000) + ' prestige levels';
+				} else if (Game.avgNewLevelsPer >= 1000000000) {
+				    displayNewLevels += 'ff2200;">' + Beautify(10000000000) + ' prestige levels';
+				} else if (Game.avgNewLevelsPer >= 100000000) {
+				    displayNewLevels += 'ff1500;">' + Beautify(1000000000) + ' prestige levels';
+				} else if (Game.avgNewLevelsPer >= 10000000) {
+				    displayNewLevels += 'ff1100;">' + Beautify(100000000) + ' prestige levels';
+				} else if (Game.avgNewLevelsPer >= 1000000) {
+				    displayNewLevels += 'ff0000;">' + Beautify(10000000) + ' prestige levels';
+				} else if (Game.avgNewLevelsPer >= 100000) {
 				    displayNewLevels += 'ff0000;">' + Beautify(1000000) + ' prestige levels';
 				} else if (Game.avgNewLevelsPer >= 10000) {
 				    displayNewLevels += 'ff0033;">100,000 prestige levels'
