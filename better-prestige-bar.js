@@ -376,7 +376,7 @@ let logic = function()
 			if (Game.season=='fools') title='Cookie Baker';
 			document.title=(Game.OnAscend?(EN?'Ascending! ':(loc("Ascending")+' | ')):'')+loc("%1 cookie",LBeautify(Game.cookies))+' - '+title;
 		}
-		if (Game.T%5==0)
+		if (Game.T%15==0)
 		{
 			//written through the magic of "hope for the best" maths
 			var chipsOwned=Game.HowMuchPrestige(Game.cookiesReset);
