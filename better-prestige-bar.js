@@ -1,3 +1,6 @@
+console.log("%c [Better Prestige Bar] Loaded the add-on! ", 'color:black;background-color:#ff0088');
+Game.Popup("Loaded add-on Better Prestige Bar!")
+
 let logic = function()
 	{
 		Game.bounds=Game.l.getBounds();
@@ -383,6 +386,9 @@ let logic = function()
 			var cookiesToNext=Game.HowManyCookiesReset(ascendNowToOwn+1)-(Game.cookiesEarned+Game.cookiesReset);
 			var percent=1-(cookiesToNext/nextChipAt);
 			
+			Game.avgNewLevelsPer = isNaN(Game.avgNewLevelsPer) ? 0 : ((newLevelsPer * 15) + Game.avgNewLevelsPer * 5) / 6;
+        		Game.oldAscendNowToGet = ascendNowToGet;
+			
 			// ! ADDED ! ///////////////////////////
 			var barPer = 1;
 
@@ -488,6 +494,7 @@ let logic = function()
 			//if (Game.ascendMeterPercentT<Game.ascendMeterPercent) {Game.ascendMeterPercent=0;PlaySound('snd/levelPrestige.mp3',0.5);}
 			//if (percent>=1) {Game.ascendMeter.className='';} else Game.ascendMeter.className='filling';
 		}
+		var ascendNowToGet = Game.oldAscendNowToGet;
 		//Game.ascendMeter.style.right=Math.floor(Math.max(0,1-Game.ascendMeterPercent)*100)+'px';
 		Game.ascendMeter.style.backgroundPosition=(-Game.T*0.5-Game.ascendMeterPercent*100)+'px';
 		Game.ascendMeter.style.transform='translate('+Math.floor(-Math.max(0,1-Game.ascendMeterPercent)*100)+'%,0px)';
