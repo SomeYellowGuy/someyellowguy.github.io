@@ -376,7 +376,7 @@ let logic = function()
 			if (Game.season=='fools') title='Cookie Baker';
 			document.title=(Game.OnAscend?(EN?'Ascending! ':(loc("Ascending")+' | ')):'')+loc("%1 cookie",LBeautify(Game.cookies))+' - '+title;
 		}
-		if (Game.T%15==0)
+		if (Game.T%3==0)
 		{
 			//written through the magic of "hope for the best" maths
 			var chipsOwned=Game.HowMuchPrestige(Game.cookiesReset);
@@ -461,13 +461,13 @@ let logic = function()
 			        var levelsLeftToResetBar = (Math.ceil(Math.floor(chipsOwned + ascendNowToGet + 1) / barPer) * barPer) - (Math.floor(chipsOwned + ascendNowToGet))
         			Game.cookiesToNextPer = Game.HowManyCookiesReset(ascendNowToOwn + levelsLeftToResetBar) - (Game.cookiesEarned + Game.cookiesReset);
         			if (Game.avgNewLevelsPer >= 100000000000) {
-				    displayNewLevels += 'ff4400;">' + Beautify(1000000000000) + ' prestige levels';
+				    displayNewLevels += 'ff8800;">' + Beautify(1000000000000) + ' prestige levels';
 				} else if (Game.avgNewLevelsPer >= 10000000000) {
-				    displayNewLevels += 'ff3300;">' + Beautify(100000000000) + ' prestige levels';
+				    displayNewLevels += 'ff6600;">' + Beautify(100000000000) + ' prestige levels';
 				} else if (Game.avgNewLevelsPer >= 1000000000) {
-				    displayNewLevels += 'ff2200;">' + Beautify(10000000000) + ' prestige levels';
+				    displayNewLevels += 'ff4400;">' + Beautify(10000000000) + ' prestige levels';
 				} else if (Game.avgNewLevelsPer >= 100000000) {
-				    displayNewLevels += 'ff1500;">' + Beautify(1000000000) + ' prestige levels';
+				    displayNewLevels += 'ff2200;">' + Beautify(1000000000) + ' prestige levels';
 				} else if (Game.avgNewLevelsPer >= 10000000) {
 				    displayNewLevels += 'ff1100;">' + Beautify(100000000) + ' prestige levels';
 				} else if (Game.avgNewLevelsPer >= 1000000) {
